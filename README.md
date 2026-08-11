@@ -1,7 +1,7 @@
 # Student API
 ## STD25045 - N3
 
-API REST simple de gestion d'étudiants construite avec **Express** et **PostgreSQL**. Elle permet de créer, lire, modifier et supprimer des étudiants.
+API REST simple de gestion d'étudiants construite avec **Express**, **TypeScript** et **PostgreSQL**. Elle permet de créer, lire, modifier et supprimer des étudiants.
 
 ## Prérequis
 
@@ -31,7 +31,8 @@ CREATE TABLE students (
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    age INT NOT NULL
+    age INT,
+    created_at TIMESTAMP DEFAULT NOW()
 );
 ```
 
@@ -49,21 +50,28 @@ PORT=3000
 ## Lancement
 
 ```bash
+# Développement (avec rechargement automatique)
 npm run dev
+
+# Compilation TypeScript
+npm run build
+
+# Production (après build)
+npm start
 ```
 
 Le serveur démarre sur `http://localhost:3000`.
 
 ## Routes de l'API
 
-| Méthode | URL                     | Description                             |
-| ------- | ----------------------- | --------------------------------------- |
-| GET     | `/`                     | Page d'accueil                          |
-| GET     | `/students`             | Récupérer tous les étudiants            |
-| GET     | `/students/:id`         | Récupérer un étudiant par son id        |
-| POST    | `/students`             | Créer un nouvel étudiant                |
-| PUT     | `/students/:id`         | Modifier un étudiant                     |
-| DELETE  | `/students/:id`         | Supprimer un étudiant                    |
+| Méthode | URL             | Description                          |
+| ------- | --------------- | ------------------------------------ |
+| GET     | `/`             | Page d'accueil                       |
+| GET     | `/students`     | Récupérer tous les étudiants         |
+| GET     | `/students/:id` | Récupérer un étudiant par son id     |
+| POST    | `/students`     | Créer un nouvel étudiant             |
+| PUT     | `/students/:id` | Modifier un étudiant                  |
+| DELETE  | `/students/:id` | Supprimer un étudiant                 |
 
 ### Exemple de requête POST
 
@@ -76,26 +84,42 @@ Le serveur démarre sur `http://localhost:3000`.
 }
 ```
 
+### Codes de réponse
+
+- `201` — création réussie
+- `200` — lecture, mise à jour ou suppression réussie
+- `400` — champs obligatoires manquants (`first_name`, `last_name`, `email`)
+- `404` — étudiant introuvable
+- `409` — email déjà utilisé
+- `500` — erreur serveur
+
 ## Structure du projet
 
 ```
 student-api/
 ├── src/
 │   ├── config/
-│   │   └── db.js              # Connexion à la base PostgreSQL
+│   │   └── db.ts                    # Connexion à la base PostgreSQL
 │   ├── controllers/
-│   │   └── student.controller.js  # Logique métier (gestion des requêtes)
+│   │   └── student.controller.ts    # Gestion des requêtes/réponses HTTP
+│   ├── services/
+│   │   └── student.service.ts       # Logique métier et validation
+│   ├── repositories/
+│   │   └── student.repository.ts    # Requêtes SQL (accès aux données)
 │   ├── models/
-│   │   └── student.model.js   # Requêtes SQL (accès aux données)
+│   │   └── student.model.ts         # Types TypeScript (interfaces)
 │   ├── routes/
-│   │   └── student.routes.js  # Définition des routes
-│   └── server.js              # Point d'entrée de l'application
-├── .env                       # Variables d'environnement
+│   │   └── student.routes.ts        # Définition des routes
+│   └── server.ts                    # Point d'entrée de l'application
+├── .env                             # Variables d'environnement
+├── tsconfig.json                    # Configuration TypeScript
 └── package.json
 ```
 
 ## Technologies
 
 - [Express](https://expressjs.com/) — framework web
+- [TypeScript](https://www.typescriptlang.org/) — typage statique
 - [pg](https://node-postgres.com/) — client PostgreSQL
-- [dotenv](https://github.com/motdotla/dotenv) — gestion des variables d'environnement# student-api
+- [dotenv](https://github.com/motdotla/dotenv) — gestion des variables d'environnement
+- [tsx](https://tsx.is/) — exécution TypeScript en développement
