@@ -1,11 +1,13 @@
 import express from 'express';
 import studentRoutes from './routes/student.routes.js';
+import authRoutes from './routes/auth.routes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
+app.use('/auth', authRoutes);
 app.use('/students', studentRoutes);
 
 app.get('/', (req, res) => {
