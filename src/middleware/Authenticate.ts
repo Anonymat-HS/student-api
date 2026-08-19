@@ -1,6 +1,6 @@
 import type { RequestHandler, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { getJwtSecret } from '../services/auth.service.js';
+import { getJwtSecret } from '../services/AuthService.js';
 
 interface JwtPayload {
     id: number;

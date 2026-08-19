@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import * as userRepository from '../repositories/user.repository.js';
+import * as userRepository from '../repositories/UserRepository.js';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-me';
 const TOKEN_EXPIRATION = '1h';

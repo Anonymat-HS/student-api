@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { create, getAll, getOne, update, remove } from '../controllers/student.controller.js';
-import { authenticate } from '../middleware/authenticate.js';
+import { create, getAll, getOne, update, remove } from '../controllers/StudentController.js';
+import { authenticate } from '../middleware/Authenticate.js';
 
 const router = Router();
 

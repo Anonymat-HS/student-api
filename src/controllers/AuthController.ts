@@ -1,5 +1,5 @@
 import type { RequestHandler, Response } from 'express';
-import { register as registerUser, login as loginUser, ConflictError, UnauthorizedError } from '../services/auth.service.js';
+import { register as registerUser, login as loginUser, ConflictError, UnauthorizedError } from '../services/AuthService.js';
 
 export const register: RequestHandler = async (req, res) => {
     try {

@@ -1,6 +1,6 @@
 import type { RequestHandler, Response } from 'express';
-import * as studentService from '../services/student.service.js';
-import { NotFoundError, ConflictError } from '../services/student.service.js';
+import * as studentService from '../services/StudentService.js';
+import { NotFoundError, ConflictError } from '../services/StudentService.js';
 
 export const create: RequestHandler = async (req, res) => {
   try {

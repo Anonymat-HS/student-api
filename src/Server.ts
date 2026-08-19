@@ -1,10 +1,12 @@
 import express from 'express';
-import studentRoutes from './routes/student.routes.js';
-import authRoutes from './routes/auth.routes.js';
+import cors from 'cors';
+import studentRoutes from './routes/StudentRoutes.js';
+import authRoutes from './routes/AuthRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.use('/auth', authRoutes);

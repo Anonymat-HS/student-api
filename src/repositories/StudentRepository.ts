@@ -1,5 +1,5 @@
-import pool from "../config/db.js";
-import type { Student, CreateStudentInput, UpdateStudentInput } from '../models/student.model.js';
+import pool from "../config/Db.js";
+import type { Student, CreateStudentInput, UpdateStudentInput } from '../models/StudentModel.js';
 
 export async function insertStudent(data: CreateStudentInput): Promise<Student>{
     const { first_name , last_name , email , age } = data;

@@ -1,5 +1,5 @@
-import pool from "../config/db.js";
-import type { User, CreateUserInput } from '../models/user.model.js';
+import pool from "../config/Db.js";
+import type { User, CreateUserInput } from '../models/UserModel.js';
 
 export async function insertUser(data: CreateUserInput): Promise<User> {
     const { username, password } = data;

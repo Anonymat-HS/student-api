@@ -1,5 +1,5 @@
-import * as studentRepository from '../repositories/student.repository.js';
-import type { Student, CreateStudentInput, UpdateStudentInput } from '../models/student.model.js';
+import * as studentRepository from '../repositories/StudentRepository.js';
+import type { Student, CreateStudentInput, UpdateStudentInput } from '../models/StudentModel.js';
 
 export class NotFoundError extends Error {}
 export class ConflictError extends Error {}
@@ -16,8 +16,6 @@ export async function getAllStudents(): Promise<Student[]> {
     return studentRepository.findAllStudents();
 }
 
-
-
 export async function getStudentById(id: number): Promise<Student | undefined> {
     const student = await studentRepository.findStudentById(id);
     if (!student) {
@@ -33,7 +31,6 @@ export async function updateStudent(id: number, data: UpdateStudentInput): Promi
     }
     return student;
 }
-
 
 export async function deleteStudent(id: number): Promise<Student> {
     const student = await studentRepository.deleteStudentById(id);
