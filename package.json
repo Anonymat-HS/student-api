@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch src/Server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/Server.js"
   },
   "type": "module",
   "keywords": [],

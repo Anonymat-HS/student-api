@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.app {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.app-header h1 {
+  color: #2c3e50;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-form {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.login-form input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.login-form button[type="submit"] {
+  padding: 12px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-form button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+.login-form button[type="submit"]:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.toggle {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 14px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.student-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.student-list th,
+.student-list td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.student-list thead {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.student-list tbody tr:hover {
+  background-color: #f0f8ff;
+}
+
+.student-list tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.student-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.student-form h2 {
+  margin-bottom: 12px;
+  color: #2c3e50;
+  font-size: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-row input {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.form-row input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.form-row button {
+  padding: 10px 24px;
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.form-row button:hover {
+  background-color: #219a52;
+}
+
+.form-row button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.student-form .error {
+  margin-top: 8px;
+}
