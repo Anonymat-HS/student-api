@@ -11,7 +11,7 @@ export class UnauthorizedError extends Error {}
 export async function register(username: string, password: string): Promise<void> {
     const existing = await userRepository.findUserByUsername(username);
     if (existing) {
-        throw new ConflictError(`Username ${username} already exists`);
+        throw new ConflictError(`L'utilisateur ${username} existe déjà`);
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -21,12 +21,12 @@ export async function register(username: string, password: string): Promise<void
 export async function login(username: string, password: string): Promise<string> {
     const user = await userRepository.findUserByUsername(username);
     if (!user) {
-        throw new UnauthorizedError('Invalid username or password');
+        throw new UnauthorizedError('Nom d\'utilisateur ou mot de passe incorrect');
     }
 
     const passwordMatches = await bcrypt.compare(password, user.password);
     if (!passwordMatches) {
-        throw new UnauthorizedError('Invalid username or password');
+        throw new UnauthorizedError('Nom d\'utilisateur ou mot de passe incorrect');
     }
 
     return jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, {
