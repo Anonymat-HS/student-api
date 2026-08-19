@@ -8,7 +8,6 @@ export default function StudentList() {
   const [loading, setLoading] = useState(true);
 
   const fetchStudents = useCallback(() => {
-    setLoading(true);
     getStudents()
       .then(setStudents)
       .catch((err) => setError(err.message))
@@ -16,8 +15,13 @@ export default function StudentList() {
   }, []);
 
   useEffect(() => {
-    fetchStudents();
-  }, [fetchStudents]);
+    let cancelled = false;
+    getStudents()
+      .then((data) => { if (!cancelled) setStudents(data); })
+      .catch((err) => { if (!cancelled) setError(err.message); })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, []);
 
   return (
     <div className="student-list">
