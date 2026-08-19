@@ -5,6 +5,7 @@ import { getJwtSecret } from '../services/AuthService.js';
 interface JwtPayload {
     id: number;
     username: string;
+    role: string;
 }
 
 export interface AuthenticatedRequest extends Express.Request {
