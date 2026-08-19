@@ -29,7 +29,7 @@ export async function login(username: string, password: string): Promise<string>
         throw new UnauthorizedError('Nom d\'utilisateur ou mot de passe incorrect');
     }
 
-    return jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, {
+    return jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, {
         expiresIn: TOKEN_EXPIRATION,
     });
 }
